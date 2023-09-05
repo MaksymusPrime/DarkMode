@@ -24,14 +24,79 @@ label {
     border-radius: 200px;
     box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.4), inset 0 -5px 15px rgba(255, 255, 255, 0.4);
     cursor: pointer;
+    transition: .5s;
 }
 
 label::after {
     content: '';
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 10px;
     background: linear-gradient(180deg, #ffcc89, #d8860b);
+    border-radius: 180px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2); 
+    transition: .5s;   
+}
+
+input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+input:checked + label {
+    background: #242424;
+}
+
+input:checked + label::after {
+    left: 490px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+label:active:after {
+    width: 260px;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: -1;
+    position: absolute;
+    transition: .7s;
+}
+
+input:checked +label + .background {
+    background: #242424;
+    transition: .7s;
+}
+
+label svg {
+    position: absolute;
+    width: 120px;
+    bottom: -300px;
+    z-index: 100;
+}
+
+label svg.sun {
+    left: 30px;
+    fill: #fff;
+    transition: .5s;
+}
+
+label svg.moon {
+    left: 350px;
+    fill: #7e7e7e;
+    transition: .5s;
+}
+
+input:checked + label svg.sun {
+    fill: #e60c0c;
+}
+
+input:checked + label svg.moon {
+    fill: #fff;
 }
